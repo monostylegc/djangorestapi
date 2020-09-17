@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'post',
     'user',
+    'knox',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,9 +44,7 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-    'rest_framework.permissions.IsAuthenticated',
-    )
+    "DEFAULT_AUTHENTICATION_CLASSES": ("knox.auth.TokenAuthentication",),
 }
 
 MIDDLEWARE = [

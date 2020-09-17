@@ -11,6 +11,3 @@ class Comment(models.Model):
     post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name = 'comments')
     content = models.CharField(max_length=200)
     
-class Vote(models.Model):
-    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name = 'votes')
-    vote = models.PositiveIntegerField(default=0)

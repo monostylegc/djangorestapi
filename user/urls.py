@@ -1,14 +1,10 @@
-from django.urls import path, include  
-from rest_framework import routers  
-from . import views
+from django.urls import path, include
+from .views import RegistrationAPI, LoginAPI, UserAPI, ProfileUpdateAPI
 
-router = routers.DefaultRouter()  
-router.register(r'user', views.UserViewSet)  
-router.register(r'group', views.GroupViewSet)
-
-urlpatterns = [  
-    # 사용자, 그룹목록 처리를 위한 url - 위의 router에서 처리되어 있다
-    path('', include(router.urls)),
-    # 인증처리를 위한 url
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+urlpatterns = [
+    path("auth/register/", RegistrationAPI.as_view()),
+    path("auth/login/", LoginAPI.as_view()),
+    path("auth/user/", UserAPI.as_view()),
+    path("auth/user/", UserAPI.as_view()),
+    path("auth/profile/<int:user_pk>/update/", ProfileUpdateAPI.as_view()),
 ]
